@@ -10,7 +10,7 @@ module.exports = {
       return res.status(401).json({ msg: 'Usuário ou senha incorretos!' })
     }
 
-    const token = await jwt.sign({ id: user._id }, '@App#App');
+    const token = await jwt.sign({ id: user._id }, process.env.HASH);
 
     return res.json({ user, token });
   },
