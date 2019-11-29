@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
       return res.status(401).json({ error: 'Token malformatted' })
     }
 
-    const decoded = await jwt.verify(token, '@App#App')
+    const decoded = await jwt.verify(token, process.env.HASH)
 
     req.userId = decoded.id
     return next()
